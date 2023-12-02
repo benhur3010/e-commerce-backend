@@ -14,9 +14,9 @@ export class CreateTableUser1701399631227 implements MigrationInterface {
                 created_at timestamp without time zone default now() NOT NULL,
                 updated_at timestamp without time zone default now() NOT NULL,
                 primary key (id)
-            );
+        );
  
-            CREATE SEQUENCE public.user_id_seq
+        CREATE SEQUENCE public.user_id_seq
                 AS integer
                 START WITH 1
                 INCREMENT BY 1
@@ -24,9 +24,9 @@ export class CreateTableUser1701399631227 implements MigrationInterface {
                 NO MAXVALUE
                 CACHE 1;
  
-            ALTER SEQUENCE public.user_id_seq OWNED BY public.user.id;
+        ALTER SEQUENCE public.user_id_seq OWNED BY public.user.id;
  
-            ALTER TABLE ONLY public.user ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regClass);
+        ALTER TABLE ONLY public.user ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regClass);
     `);
   }
 
