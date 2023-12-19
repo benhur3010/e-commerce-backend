@@ -4,6 +4,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -26,5 +27,10 @@ export class UserController {
     return (await this.userService.getAllUser()).map(
       (UserEntity) => new ReturnUserDto(UserEntity),
     );
+  }
+
+  @Get('/:userId')
+  async getUserById(@Param('userId') userId: number) {
+    return this.userService.getUserByIdUsingRelations(userId);
   }
 }
