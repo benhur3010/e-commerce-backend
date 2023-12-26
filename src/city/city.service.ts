@@ -9,10 +9,10 @@ export class CityService {
   constructor(
     @InjectRepository(CityEntity)
     private readonly cityRepository: Repository<CityEntity>,
-    private readonly cacheManager: CacheService,
+    private readonly cacheService: CacheService,
   ) {}
   async getAllCitiesByStateId(stateId: number): Promise<CityEntity[]> {
-    return this.cacheManager.getCache<CityEntity[]>(`${stateId}`, () =>
+    return this.cacheService.getCache<CityEntity[]>(`${stateId}`, () =>
       this.cityRepository.find({
         where: {
           stateId,
